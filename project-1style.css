@@ -1,0 +1,198 @@
+ /* ========== THEME TOKENS ========== */
+:root{
+  --bg:#F8FAFC;
+  --card:#FFFFFF;
+  --text:#0F172A;
+  --muted:#64748B;
+  --line:#E5E7EB;
+  --accent:#2563EB;
+}
+
+[data-theme="dark"] {
+  --bg:#0B1020;
+  --card:#121833;
+  --text:#E2E8F0;
+  --muted:#94A3B8;
+  --line:#1F2937;
+  --accent:#60A5FA;
+ }
+
+/* ========== GLOBAL ========== */
+*{ box-sizing: border-box; }
+html,body{ height:100%; }
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font:16px/1.5 system-ui, Segoe UI, Roboto, Inter, sans-serif;
+}
+
+.wrap{
+  max-width:1100px;
+  margin:0 auto;
+  padding:20px;
+}
+
+
+/* ========== HEADER ========== */
+header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:14px;
+}
+
+.brand{
+  font-weight:700;
+  letter-spacing:.2px;
+}
+
+/* toolbar + toolber (both supported) */
+.toolbar, .toolber{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+/* ========== FORM CONTROLS ========== */
+input, select, button{
+  height:44px;
+  padding:0 12px;
+  border:1px solid var(--line);
+  background:var(--card);
+  color:var(--text);
+  border-radius:10px;
+  outline:none;
+}
+
+input::placeholder{ color:color-mix(in oklab, var(--muted) 70%, transparent); }
+
+input:focus, select:focus, button:focus{   /* it only applies when they are focused (clicked or selected). */
+  box-shadow:0 0 0 3px color-mix(in oklab, var(--accent) 35%, transparent);
+}
+
+button{
+  cursor:pointer;
+  transition:transform .12s ease, box-shadow .12s ease, opacity .12s; 
+
+.btn{
+  background:var(--accent);
+  color:#fff;
+  border:none;
+  padding:0 16px; 
+}
+
+.btn.secondary{
+  background:transparent;
+  color:var(--text);
+  border:1px solid var(--line);
+}
+
+.btn:disabled{     /*button disable thaka obosthai cursor show korbe na ... mane button er kaj na kora porjonto disable dhora hobe */
+  opacity:.6;
+  cursor:not-allowed;
+}
+
+/* Moon/Sun icon button a little bigger */
+#themeBtn{
+  font-size:22px;
+  line-height:1;
+  padding:6px 10px;
+}
+
+/* ========== STATE TEXTS ========== */
+.loading, .empty, .error{
+  padding:24px;
+  text-align:center;
+  color:var(--muted);
+}
+
+/* ========== GRID & CARDS ========== */
+.grid{
+  display:grid;
+  gap:14px;
+  margin-top:14px;
+  grid-template-columns:repeat(1, minmax(0, 1fr));
+}
+
+@media (min-width:560px){
+  .grid{ grid-template-columns:repeat(2, 1fr); }
+}
+@media (min-width:860px){
+  .grid{ grid-template-columns:repeat(3, 1fr); }
+}
+@media (min-width:1080px){
+  .grid{ grid-template-columns:repeat(4, 1fr); }
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:14px;   
+  overflow:hidden;    
+  display:flex;       
+  flex-direction:column;
+  transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease; 
+}
+
+.card:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 26px rgba(0,0,0,.10);
+  border-color: color-mix(in oklab, var(--accent) 30%, var(--line));
+}
+
+/* Poster placeholder area (keep ratio 2:3) */
+.poster{
+  aspect-ratio:2/3;
+  width:100%;
+  object-fit:cover;
+  background: #0b0b0b10;
+}
+
+.meta{
+  padding:12px;
+}
+
+.title{
+  font-weight:700;
+  margin:4px 0 2px;
+}
+
+.sub{
+  color:var(--muted);
+  font-size:13px;
+}
+
+.actions{
+  padding:0 12px 12px;
+  margin-top:auto;
+}
+
+/* ========== PAGINATION ========== */
+.pagination{
+  display:flex;
+  gap:8px;
+  justify-content:center;
+  align-items:center;
+  margin:18px 0;
+}
+
+.muted{ color:var(--muted); }
+
+/* ========== UTILITIES ========== */
+.hidden{ display:none !important; } 
+
+/* Optional: nicer scrollbar on desktop */ 
+@media (hover:hover){                
+    scrollbar-width:thin;
+    scrollbar-color: var(--line) transparent;
+  }
+  *::-webkit-scrollbar{ height:10px; width:10px; } /* *::-webkit-scrollbar This part is for Chrome, Edge, and Safari (WebKit browsers).It styles the scrollbar using vendor-specific syntax.*/
+  *::-webkit-scrollbar-thumb{ background:var(--line); border-radius:999px;   transition: background 0.2s ease;}
+  *::-webkit-scrollbar-track{ background:transparent; }
+  *::-webkit-scrollbar-thumb:hover{
+    background: var(--accent);
+
+  }
+} 

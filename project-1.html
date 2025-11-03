@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Movie / Show Search</title>
+  <link rel="stylesheet" href="./project-1style.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">🎬 MovieFinder</div>
+      <div class="toolber">
+        <button id="themeBtn" class="btn secondary" title="Toggle theme">🌙</button>
+      </div>
+    </header>
+
+    <div class="toolber" role="search">
+      <input id="q" type="search" placeholder="Search show… (e.g. batman)" aria-label="Show title" />
+      <select id="type" aria-label="Type">
+        <option value="">All types</option>
+        <option value="Scripted">Scripted</option>
+        <option value="Animation">Animation</option>
+        <option value="Reality">Reality</option>
+        <option value="Talk Show">Talk Show</option>
+      </select>
+      <input id="year" type="number" placeholder="Year" min="1900" max="2100" style="width:110px" aria-label="Year" />
+      <select id="sort" aria-label="Sort">
+        <option value="">Sort: Default</option>
+        <option value="title-asc">Title A–Z</option>
+        <option value="title-desc">Title Z–A</option>
+        <option value="year-asc">Year ↑</option>
+        <option value="year-desc">Year ↓</option>
+      </select>
+      <button id="searchBtn" class="btn">Search</button>
+      <button id="clearBtn" class="btn secondary">Clear</button>
+    </div>
+
+    <!-- UI state -->
+    <div id="state" class="loading" hidden>Loading…</div>
+
+    <!-- cards -->
+    <div id="grid" class="grid"></div>
+
+    <!-- pagination -->
+    <div id="pager" class="pagination" hidden>
+      <button id="prevBtn" class="btn secondary">← Prev</button>
+      <span id="pageInfo" class="muted" aria-live="polite"></span>
+      <button id="nextBtn" class="btn secondary">Next →</button>
+    </div>
+  </div>
+
+  <!-- modal already in HTML -->
+  <dialog id="modal" aria-label="Show details">
+    <div class="modal-head">
+      <strong id="mTitle">Details</strong>
+      <button id="closeModal" class="btn secondary">Close</button>
+    </div>
+    <div class="modal-body">
+      <img id="mPoster" class="poster" alt="Poster"/>
+      <div>
+        <div id="mFacts" class="muted"></div>
+        <p id="mPlot"></p>
+        <div id="mChips"></div>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="./project-1.js"></script>
+</body>
+</html>
